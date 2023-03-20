@@ -1,4 +1,4 @@
 # Készítők
--Nováki Tamás
--Szollinger Rajmund
--Pintér Roni Áron
+>Nováki Tamás  
+>Szollinger Rajmund  
+>Pintér Roni Áron  
