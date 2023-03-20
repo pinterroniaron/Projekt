@@ -1,0 +1,68 @@
+body {
+    background-color: black;
+}
+
+.header {
+    overflow: hidden;
+    background-color: grey;
+    padding: 20px 10px;
+    animation: headerSlide 1s ease-in 0s 1 normal none;
+  }
+  
+  .header a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 21px;
+    line-height: 25px;
+    border-radius: 4px;
+  }
+  
+  .header a.home {
+    font-size: 25px;
+    font-weight: bold;
+  }
+  
+  .header a:hover {
+    background-color: #05a8aa;
+    color: #b8d5b8;
+    transform: translateY(-10px);
+  }
+  
+  .header a.active {
+    background-color: #05a8aa;
+    color: #b8d5b8;
+  }
+  
+  .header-right {
+    float: right;
+  }
+  
+  @media screen and (max-width: 500px) {
+    .header a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+  
+    .header-right {
+      float: none;
+    }
+  }
+  
+  .header a {
+    transition: transform 0.4s;
+    transition-timing-function: ease-out;
+  }
+
+  @keyframes headerSlide {
+    from {
+      transform: translateY(-100%);
+    }
+
+    to {
+      transform: translateY(0%);
+    }
+  }
