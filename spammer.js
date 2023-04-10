@@ -1,4 +1,4 @@
-// Set up the initial state
+// változók
 const winningScore = 50;
 const halfScore = winningScore / 2;
 let player1Score = halfScore;
@@ -6,17 +6,17 @@ let player2Score = halfScore;
 let isFirstKeyPress = true;
 const player1Key = "a";
 const player2Key = "l";
-let clickDelay = 0.1; // default delay in milliseconds
+let clickDelay = 0.1;
 let lastPlayer1Click = 0;
 let lastPlayer2Click = 0;
 let isPlayer1KeyPressed = false;
 let isPlayer2KeyPressed = false;
 
-// Update the scores and check for a winner
+// pont frissítés
 function updateScores(event) {
   if (!isGameStarted) return;
   if (isFirstKeyPress) {
-    // Reset the scores to the initial state
+    // pont visszaállítás
     player1Score = halfScore;
     player2Score = halfScore;
     isFirstKeyPress = false;
@@ -70,7 +70,7 @@ function resetKeyPress(event) {
   }
 }
 
-// Countdown and start the game
+// visszaszámláló, start gomb
 let isGameStarted = false;
 const startButton = document.getElementById("start-button");
 startButton.addEventListener("click", () => {
@@ -87,6 +87,6 @@ startButton.addEventListener("click", () => {
   }, 1000);
 });
 
-// Listen for key presses
+// lenyomások
 document.addEventListener("keydown", updateScores);
 document.addEventListener("keyup", resetKeyPress);
