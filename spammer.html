@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Click Race</title>
+  <link rel="stylesheet" href="spammer.css">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    #player1, #player2 {
+      height: 100%;
+      float: left;
+    }
+    #player1 {
+      background-color: blue;
+      width: 50%;
+    }
+    #player2 {
+      background-color: red;
+      width: 50%;
+    }
+    #start-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 50px;
+      background-color: black;
+      padding: 16px;;
+      color: white;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="player1"></div>
+  <div id="player2"></div>
+  <div id="countdown"></div>
+<button id="start-button">Start</button>
+  <script src="spammer.js"></script>
+</body>
+</html>
