@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Aim Trainer Game</title>
+    <style>
+      body {
+        background-position: 50% 30%;
+        background-color: #fff;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background: linear-gradient(to bottom, #ffffff, #3632ff);
+        height: 100vh;
+        overflow: hidden;
+      }
+      h1 {
+        color: #333;
+        margin-top: 30px;
+        font-size: 50px;
+      }
+      .frame {
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin-top: 60px;
+        width: 960px;
+        height: 480px;
+        border: 2px solid #333;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+        background-color: white;
+      }
+
+      .dot {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #333;
+        cursor: pointer;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+      }
+      .hearts {
+        margin-top: auto;
+        font-size: 50px;
+        text-shadow: 0px 0px 5px rgba(255, 0, 0, 0.25);
+        font-size: 70px;
+        color: red;
+      }
+
+      .start-btn {
+        display: inline-block;
+        padding: 15px 30px;
+        background-color: rgba(51, 51, 51, 0.807);
+        color: #fff;
+        font-size: 75px;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        margin-top: 10px;
+        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        transition: transform 0.2s ease-in-out;
+      }
+
+      .start-btn:hover {
+        background-color: black;
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+
+      .score {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .final-score {
+        position: absolute;
+        top: 34%;
+        left: 50%;
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        font-size: 50px;
+        transform: translate(-50%, -50%);
+        text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Aim Trainer Game</h1>
+    <div class="frame"></div>
+    <div class="hearts">
+      <span id="heart1">&#x2764;</span>
+      <span id="heart2">&#x2764;</span>
+      <span id="heart3">&#x2764;</span>
+    </div>
+    <div class="final-score"></div>
+    <div>
+      <button class="start-btn">Start</button>
+    </div>
+    <script>
+      // Initialize variables
+      let dots = [];
+      let score = 0;
+      let lives = 3;
+      let frame = document.querySelector(".frame");
+      let startBtn = document.querySelector(".start-btn");
+      let hearts = document.querySelectorAll(".hearts span");
+      let scoreElement = document.createElement("div");
+      let finalscore = document.createElement("div.final-score");
+      let timeInterval = 1500;
+      scoreElement.classList.add("score");
+      finalscore.classList.add("final-score");
+      frame.appendChild(scoreElement);
+      frame.style.display = "none";
+
+      // Function to generate random dots
+      function generateDot() {
+        let dot = document.createElement("div");
+        dot.classList.add("dot");
+        let dotSize = 70; // define the size of the dot
+        let top = Math.floor(
+          Math.random() * (frame.offsetHeight - dotSize - 100)
+        ); // calculate top position
+        let left = Math.floor(
+          Math.random() * (frame.offsetWidth - dotSize - 100)
+        ); // calculate left position
+        dot.style.top = top + "px";
+        dot.style.left = left + "px";
+        dot.style.width = dotSize + "px"; // set width of dot
+        dot.style.height = dotSize + "px"; // set height of dot
+        frame.appendChild(dot);
+        dots.push(dot);
+        dot.addEventListener("click", function () {
+          this.remove();
+          dots.splice(dots.indexOf(this), 1);
+          score++;
+          scoreElement.innerText = `Score: ${score}`;
+          if (score % 5 === 0 && score <= 20) {
+            timeInterval -= 200;
+          }
+          if (score % 5 === 0 && score < 55 && score > 20) {
+            timeInterval -= 100;
+          }
+          generateDot();
+        });
+        setTimeout(function () {
+          if (dots.indexOf(dot) !== -1) {
+            dot.remove();
+            dots.splice(dots.indexOf(dot), 1);
+            lives--;
+            hearts[lives].style.opacity = 0.3;
+            if (lives === 0) {
+              endGame();
+            } else {
+              generateDot();
+            }
+          }
+        }, timeInterval);
+      }
+
+      // Function to start the game
+      function startGame() {
+        frame.appendChild(scoreElement);
+        score = 0;
+        lives = 3;
+        scoreElement.innerText = `Score: ${score}`;
+        hearts.forEach(function (heart) {
+          heart.style.opacity = 1;
+        });
+        startBtn.style.display = "none";
+        frame.style.display = "block";
+        setTimeout(function () {
+          generateDot();
+        }, 1000); // 1 second delay
+      }
+
+      // Function to end the game
+      function endGame() {
+        document.body.appendChild(finalscore);
+        dots.forEach(function (dot) {
+          dot.remove();
+        });
+        dots = [];
+        finalscore.style.display = "block";
+        startBtn.style.display = "inline-block";
+        frame.style.display = "none";
+        finalscore.innerText = `Final Score: ${score}`;
+        timeInterval = 1500;
+      }
+
+      // Event listener for start button
+      startBtn.addEventListener("click", function () {
+        finalscore.style.display = "none";
+        startGame();
+      });
+
+      // Event listener for hearts
+      hearts.forEach(function (heart) {
+        heart.addEventListener("click", function () {
+          if (lives === 0) {
+            return;
+          }
+          lives++;
+          this.style.opacity = 1;
+        });
+      });
+
+      // Event listener for window resize
+      window.addEventListener("resize", function () {
+        let dotElements = document.querySelectorAll(".dot");
+        dotElements.forEach(function (dot) {
+          dot.style.top =
+            Math.floor(
+              Math.random() * (frame.offsetHeight - dot.offsetHeight)
+            ) + "10px";
+          dot.style.left =
+            Math.floor(Math.random() * (frame.offsetWidth - dot.offsetWidth)) +
+            "100px";
+        });
+      });
+    </script>
+  </body>
+</html>
