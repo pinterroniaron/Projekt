@@ -33,7 +33,20 @@ function updateScores(event) {
         document.getElementById("player1").style.width = "100%";
         document.getElementById("player2").style.width = "0%";
         setTimeout(function() {
-          alert("Player 1 wins!");
+          alert(`${document.getElementById("player1-name").value ? document.getElementById("player1-name").value : "Player 1"} wins!`);
+          isFirstKeyPress = false;
+          lastPlayer1Click = 0;
+          lastPlayer2Click = 0;
+          isPlayer1KeyPressed = false;
+          isPlayer2KeyPressed = false;
+          player1Score = halfScore;
+          player2Score = halfScore;
+          startButton.style.display = "block";
+          playerinput.style.display = "block";
+          isGameStarted = false;
+          startButton.textContent = "Start";
+          document.getElementById("player1").style.width = "50%";
+          document.getElementById("player2").style.width = "50%"; 
         }, 100);
         return;
       }
@@ -48,7 +61,20 @@ function updateScores(event) {
         document.getElementById("player1").style.width = "0%";
         document.getElementById("player2").style.width = "100%";
         setTimeout(function() {
-          alert("Player 2 wins!");
+          alert(`${document.getElementById("player2-name").value ? document.getElementById("player2-name").value : "Player 2"} wins!`) ;
+          isFirstKeyPress = false;
+          lastPlayer1Click = 0;
+          lastPlayer2Click = 0;
+          isPlayer1KeyPressed = false;
+          isPlayer2KeyPressed = false;
+          player1Score = halfScore;
+          player2Score = halfScore;
+          startButton.style.display = "block";
+          playerinput.style.display = "block";
+          isGameStarted = false;
+          startButton.textContent = "Start";
+          document.getElementById("player1").style.width = "50%";
+          document.getElementById("player2").style.width = "50%"; 
         }, 100);
         return;
       }
@@ -70,9 +96,25 @@ function resetKeyPress(event) {
   }
 }
 
+function resetGame() {
+  player1Score = halfScore;
+  player2Score = halfScore;
+  isFirstKeyPress = true;
+  lastPlayer1Click = 0;
+  lastPlayer2Click = 0;
+  isPlayer1KeyPressed = false;
+  isPlayer2KeyPressed = false;
+  document.getElementById("player1").style.width = `${halfScore}%`;
+  document.getElementById("player2").style.width = `${halfScore}%`;
+  startButton.style.display = "block";
+  playerinput.style.display = "block";
+  isGameStarted = false;
+}
+
 // visszaszámláló, start gomb
 let isGameStarted = false;
 const startButton = document.getElementById("start-button");
+const playerinput = document.getElementById("player-inputs");
 startButton.addEventListener("click", () => {
   startButton.textContent = "3";
   setTimeout(() => {
@@ -81,6 +123,7 @@ startButton.addEventListener("click", () => {
       startButton.textContent = "1";
       setTimeout(() => {
         startButton.style.display = "none";
+        playerinput.style.display = "none";
         isGameStarted = true;
       }, 1000);
     }, 1000);
@@ -90,49 +133,3 @@ startButton.addEventListener("click", () => {
 // lenyomások
 document.addEventListener("keydown", updateScores);
 document.addEventListener("keyup", resetKeyPress);
-
-
-
-// Add animation to the navbar
-const nav = document.querySelector('nav');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        nav.classList.add('scroll');
-    } else {
-        nav.classList.remove('scroll');
-    }
-});
-
-// Add animations to the featured products section
-const cards = document.querySelectorAll('.card');
-cards.forEach(card => {
-    card.addEventListener('mouseover', () => {
-        card.classList.add('animate__animated', 'animate__pulse');
-    });
-    card.addEventListener('mouseout', () => {
-        card.classList.remove('animate__animated', 'animate__pulse');
-    });
-});
-
-// Add a cart functionality
-const btns = document.querySelectorAll('.btn');
-const cartCount = document.querySelector('.cart-count');
-let count = 0;
-
-btns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        count++;
-        cartCount.innerHTML = count;
-    });
-});
-
-function darkmode() {
-        var element = document.body;
-        element.classList.toggle("darkmode");
-
-        if (!element.classList.contains("darkmode")) {
-          document.querySelector("#darkmode").innerText = "Sárga/Fekete";
-        } else {
-          document.querySelector("#darkmode").innerText = "Kék/Piros";
-        }
-      }
