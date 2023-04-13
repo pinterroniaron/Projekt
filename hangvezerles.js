@@ -5,6 +5,7 @@ if ("webkitSpeechRecognition" in window) {
 
   speechRecognition.continuous = true;
   speechRecognition.interimResults = true;
+  speechRecognition.lang = "hu";
 
   speechRecognition.onstart = () => {
     document.querySelector("#status").style.display = "block";
@@ -14,8 +15,9 @@ if ("webkitSpeechRecognition" in window) {
   };
   speechRecognition.onend = () => {
     document.querySelector("#status").style.display = "none";
-    console.log('again');
-    if (isRecognitionOn) { // start again only if the recognition is still on
+    console.log("again");
+    if (isRecognitionOn) {
+      // start again only if the recognition is still on
       speechRecognition.start();
     }
   };
@@ -32,40 +34,40 @@ if ("webkitSpeechRecognition" in window) {
     }
 
     if (final_transcript.includes("vissza")) {
-      window.open('index.html',"_self"); 
+      window.open("index.html", "_self");
     }
     if (final_transcript.includes("haza")) {
-      window.open('index.html',"_self"); 
+      window.open("index.html", "_self");
     }
     if (final_transcript.includes("pong")) {
-      window.open('pongg.html',"_self"); 
+      window.open("pongg.html", "_self");
     }
     if (final_transcript.includes("é")) {
-      window.open('aimteszt.html',"_self"); 
+      window.open("aimteszt.html", "_self");
     }
     if (final_transcript.includes("s")) {
-      window.open('spammer.html',"_self"); 
+      window.open("spammer.html", "_self");
     }
     if (final_transcript.includes("sz")) {
-      window.open('spammer.html',"_self"); 
+      window.open("spammer.html", "_self");
     }
     if (final_transcript.includes("egy")) {
-      window.open('pongg.html',"_self"); 
+      window.open("pongg.html", "_self");
     }
     if (final_transcript.includes("kettő")) {
-      window.open('aimteszt.html',"_self"); 
+      window.open("aimteszt.html", "_self");
     }
     if (final_transcript.includes("három")) {
-      window.open('spammer.html',"_self"); 
+      window.open("spammer.html", "_self");
     }
     if (final_transcript.includes("1")) {
-      window.open('pongg.html',"_self"); 
+      window.open("pongg.html", "_self");
     }
     if (final_transcript.includes("2")) {
-      window.open('aimteszt.html',"_self"); 
+      window.open("aimteszt.html", "_self");
     }
     if (final_transcript.includes("3")) {
-      window.open('spammer.html',"_self"); 
+      window.open("spammer.html", "_self");
     }
   };
 
@@ -82,7 +84,8 @@ if ("webkitSpeechRecognition" in window) {
 
   // elindítás
   document.addEventListener("keydown", (event) => {
-    if (event.code === "Backquote") { // change "Space" to the key you want to use
+    if (event.code === "Backquote") {
+      // change "Space" to the key you want to use
       toggleRecognition();
     }
   });
