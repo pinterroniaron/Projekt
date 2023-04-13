@@ -1,6 +1,7 @@
 if ("webkitSpeechRecognition" in window) {
   let speechRecognition = new webkitSpeechRecognition();
   let final_transcript = "";
+  let isRecognitionOn = false; // added variable to track state
 
   speechRecognition.continuous = true;
   speechRecognition.interimResults = true;
@@ -13,9 +14,10 @@ if ("webkitSpeechRecognition" in window) {
   };
   speechRecognition.onend = () => {
     document.querySelector("#status").style.display = "none";
-    // Újraindítás
-    speechRecognition.start();
-    console.log('again')
+    console.log('again');
+    if (isRecognitionOn) { // start again only if the recognition is still on
+      speechRecognition.start();
+    }
   };
 
   speechRecognition.onresult = (event) => {
@@ -29,7 +31,6 @@ if ("webkitSpeechRecognition" in window) {
       }
     }
 
-  
     if (final_transcript.includes("vissza")) {
       window.open('index.html',"_self"); 
     }
@@ -68,13 +69,22 @@ if ("webkitSpeechRecognition" in window) {
     }
   };
 
-  // indítás megnyitáskor
-  window.onload = () => {
-    speechRecognition.start();
-  };
-    // indítás clickre
-  document.addEventListener("click", () => {
+  // kibe kapcsolás
+  const toggleRecognition = () => {
+    if (isRecognitionOn) {
+      speechRecognition.stop();
+      isRecognitionOn = false;
+    } else {
       speechRecognition.start();
+      isRecognitionOn = true;
+    }
+  };
+
+  // elindítás
+  document.addEventListener("keydown", (event) => {
+    if (event.code === "Backquote") { // change "Space" to the key you want to use
+      toggleRecognition();
+    }
   });
 } else {
   console.log("Speech Recognition Not Available");
