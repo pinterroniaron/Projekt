@@ -43,6 +43,7 @@ function updateScores(event) {
           player2Score = halfScore;
           startButton.style.display = "block";
           playerinput.style.display = "block";
+          head.style.display = "block";
           isGameStarted = false;
           startButton.textContent = "Start";
           document.getElementById("player1").style.width = "50%";
@@ -71,6 +72,7 @@ function updateScores(event) {
           player2Score = halfScore;
           startButton.style.display = "block";
           playerinput.style.display = "block";
+          head.style.display = "block";
           isGameStarted = false;
           startButton.textContent = "Start";
           document.getElementById("player1").style.width = "50%";
@@ -125,6 +127,8 @@ startButton.addEventListener("click", () => {
         startButton.style.display = "none";
         playerinput.style.display = "none";
         isGameStarted = true;
+        const head = document.getElementById("head");
+        head.style.display = "none";
       }, 1000);
     }, 1000);
   }, 1000);
