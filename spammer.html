@@ -32,7 +32,17 @@
       color: white;
       cursor: pointer;
     }
-
+    #player-inputs {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    #player-inputs input[type=text] {
+      font-size: 24px;
+      padding: 8px;
+      margin: 80px;
+    }
   </style>
 </head>
 <body>
@@ -40,7 +50,7 @@
 		<nav>
 			<h1 class="minigame">MiniGames</h1>
 			<ul>
-				<li><a class="btn" href="index.html">Home</a></li>
+				<li><a class="btn" href="Index.html">Home</a></li>
 				<li><a class="btn" href="ponggg.html">Pong</a></li>
         <li><a class="btn" href="aimteszt.html">Aim teszt</a></li>
         <li><a class="btn" href="spammer.html">Spammer</a></li>
@@ -53,7 +63,11 @@
   <div id="player1"></div>
   <div id="player2"></div>
   <div id="countdown"></div>
-<button id="start-button">Start</button>
+  <div id="player-inputs">
+    <input type="text" id="player1-name" placeholder="Enter Player 1 Name">
+    <input type="text" id="player2-name" placeholder="Enter Player 2 Name">
+  </div>
+  <button id="start-button">Start</button>
   <script src="spammer.js"></script>
   <script src="hangvezerles.js"></script>
   <div id="status"></div>
