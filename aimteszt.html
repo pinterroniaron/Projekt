@@ -17,6 +17,7 @@
         color: #333;
         margin-top: 30px;
         font-size: 50px;
+        user-select: none;
       }
       .frame {
         display: inline-block;
@@ -54,6 +55,7 @@
         text-shadow: 0px 0px 5px rgba(255, 0, 0, 0.25);
         font-size: 70px;
         color: red;
+        user-select: none;
       }
 
       .start-btn {
@@ -72,6 +74,7 @@
         top: 50%;
         transform: translate(-50%, -50%);
         transition: transform 0.2s ease-in-out;
+        user-select: none;
       }
 
       .start-btn:hover {
@@ -86,6 +89,7 @@
         font-size: 24px;
         font-weight: bold;
         color: #333;
+        user-select: none;
       }
 
       .final-score {
@@ -98,6 +102,8 @@
         font-size: 50px;
         transform: translate(-50%, -50%);
         text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+        user-select: none;
+        cursor: pointer;
       }
     </style>
   </head>
@@ -214,6 +220,7 @@
         startBtn.style.display = "inline-block";
         frame.style.display = "none";
         finalscore.innerText = `Final Score: ${score}`;
+        finalscore.addEventListener('click', copyToClipboard);
         timeInterval = 1500;
       }
 
@@ -234,6 +241,13 @@
         });
       });
 
+      function copyToClipboard() {
+      const textToCopy = finalscore.innerText;
+      navigator.clipboard.writeText(textToCopy);
+      alert('Vágólapra másolva!');
+    }
+
+
       // Event listener for window resize
       window.addEventListener("resize", function () {
         let dotElements = document.querySelectorAll(".dot");
@@ -250,5 +264,6 @@
     </script>
   </body>
   <script src="hangvezerles.js"></script>
+  <link rel="stylesheet" href="header.css">
   <div id="status"></div>
 </html>

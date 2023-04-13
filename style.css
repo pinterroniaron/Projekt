@@ -195,6 +195,10 @@ h2 {
   animation: fadeIn 2s;
 }
 
+.cim{
+  user-select: none;
+}
+
 @keyframes Slidein {
   from {
     transform: translateX(800px);
