@@ -243,7 +243,7 @@
 
       function copyToClipboard() {
       const textToCopy = finalscore.innerText;
-      navigator.clipboard.writeText('finalscore');
+      navigator.clipboard.writeText(textToCopy);
       alert('Vágólapra másolva!');
     }
 
@@ -264,6 +264,7 @@
     </script>
   </body>
   <script src="hangvezerles.js"></script>
+  <script src="nav.js"></script>
   <link rel="stylesheet" href="header.css">
   <div id="status"></div>
 </html>
