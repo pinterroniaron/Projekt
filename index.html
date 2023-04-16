@@ -2,99 +2,6 @@
 <html>
   <head>
     <title>Minigamek</title>
-    <style>
-      body {
-        background-color: black;
-        color: white;
-        font-family: "Press Start 2P", cursive;
-        text-align: center;
-        cursor: pointer;
-      }
-      h1 {
-        font-size: 48px;
-      }
-      .arcade-machine {
-        width: 400px;
-        height: 600px;
-        margin: auto;
-        background-image: url("arcade-machine.jpg");
-        background-size: cover;
-        position: relative;
-      }
-      .screen {
-        width: 300px;
-        height: 200px;
-        background-color: black;
-        position: absolute;
-        top: 140px;
-        left: 50px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-      }
-      .game {
-        font-size: 36px;
-        font-weight: bold;
-        text-transform: uppercase;
-        color: white;
-        margin: 10px 0;
-        padding: 0 20px;
-        position: relative;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-      }
-      .game:not(:first-child)::before {
-        content: "⮞";
-        font-size: 24px;
-        position: absolute;
-        left: -30px;
-        top: 0;
-      }
-      .game:first-child:before {
-        content: "⮞";
-        font-size: 24px;
-        position: absolute;
-        left: -30px;
-        top: 0;
-      }
-
-      .game:hover {
-        animation: blink 1s infinite;
-      }
-      .active {
-        animation: blink 1s infinite;
-      }
-      @keyframes blink {
-        0% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0;
-        }
-        100% {
-          opacity: 1;
-        }
-      }
-      
-      .img-container {
-        max-width: 30%;
-        position: absolute;
-        top: 20%;
-        right: 2%;
-        border: none;
-      }
-      
-      .img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border: none;
-        border-radius: 10px;
-      }
-
-    </style>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Press+Start+2P" />
   </head>
   <body>
@@ -105,6 +12,14 @@
         <a class="game" id="game-2" href="aimteszt.html">Aim&nbsp;Teszt<span class="arrow"></span></a>
         <a class="game" id="game-3" href="spammer.html">Spammer<span class="arrow"></span></a>
       </div>
+    </div>
+    <div class="text-container">
+      <h1 id="pongcim">Pong</h1>
+      <p id="text1">Egy igazi klasszikusra vágysz? Biztosan jól ismered a pong nevezetű játékot.</p>
+      <h1 id="aimcim">Aim Teszt</h1>
+      <p id="text2">Szeretnéd tudni mennyire célzol jól? Gyere és teszteld a tudásod!</p>
+      <h1 id="spammercim">Spammer</h1>
+      <p id="text3">Melyikőtök a gyorsabb? Most eldönhetitek ki tudja jobban "püfölni" a billentyűzetet</p>
     </div>
     <p>Nyomj Entert az indításhoz</p>
     <div class="img-container">

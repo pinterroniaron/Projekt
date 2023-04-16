@@ -2,7 +2,6 @@ let games = document.querySelectorAll(".game");
 let activeIndex = 0;
 games[activeIndex].classList.add("active");
 
-// Add event listeners for mouseover and mouseout events
 games.forEach((game) => {
   game.addEventListener("mouseover", function () {
     games[activeIndex].classList.remove("active");
@@ -16,7 +15,7 @@ games.forEach((game) => {
       }
     });
     this.querySelector(".arrow").style.display = "inline-block";
-    updateImage(); // Update the image when the active game changes
+    updateImage(); 
   });
 
   game.addEventListener("mouseout", function () {
@@ -29,7 +28,7 @@ games.forEach((game) => {
     });
     games[activeIndex].classList.add("active");
     this.querySelector(".arrow").style.display = "none";
-    updateImage(); // Update the image when the active game changes
+    updateImage();
   });
 });
 
@@ -45,7 +44,7 @@ document.addEventListener("keydown", function (event) {
         otherGame.querySelector(".arrow").style.display = "inline-block";
       }
     });
-    updateImage(); // Update the image when the active game changes
+    updateImage(); 
   } else if (event.code === "ArrowDown" && activeIndex < games.length - 1) {
     games[activeIndex].classList.remove("active");
     activeIndex++;
@@ -57,9 +56,9 @@ document.addEventListener("keydown", function (event) {
         otherGame.querySelector(".arrow").style.display = "inline-block";
       }
     });
-    updateImage(); // Update the image when the active game changes
+    updateImage(); 
   } else if (event.code === "Enter") {
-    games[activeIndex].click(); // Opens the active game
+    games[activeIndex].click();
   }
 });
 
@@ -70,13 +69,41 @@ window.addEventListener('load', function() {
 function updateImage() {
   let image = document.querySelector(".img");
   let activeGame = document.querySelector(".active");
+  let text1 = document.querySelector("#text1");
+  let text2 = document.querySelector("#text2");
+  let text3 = document.querySelector("#text3");
+  let pongcim = document.querySelector("#pongcim");
+  let aimcim = document.querySelector("#aimcim");
+  let spammercim = document.querySelector("#spammercim");
+
   if (activeGame.id === "game-1") {
-    image.src = "pics/pong.jpeg"; // Replace with the image for game 1
+    image.src = "pics/pong.jpeg";
+    text1.style.display = "block";
+    text2.style.display = "none";
+    text3.style.display = "none";
+    pongcim.style.display = "block";
+    aimcim.style.display = "none";
+    spammercim.style.display = "none";
   } else if (activeGame.id === "game-2") {
-    image.src = "pics/aimteszt.png"; // Replace with the image for game 2
+    image.src = "pics/aimteszt.png";
+    text1.style.display = "none";
+    text2.style.display = "block";
+    text3.style.display = "none";
+    pongcim.style.display = "none";
+    aimcim.style.display = "block";
+    spammercim.style.display = "none";
   } else if (activeGame.id === "game-3") {
-    image.src = "pics/spammer.png"; // Replace with the image for game 3
+    image.src = "pics/spammer.png";
+    text1.style.display = "none";
+    text2.style.display = "none";
+    text3.style.display = "block";
+    pongcim.style.display = "none";
+    aimcim.style.display = "none";
+    spammercim.style.display = "block";
   } else {
-    image.src = ""; // Clear the image if no game is active
+    image.src = "";
+    text1.style.display = "none";
+    text2.style.display = "none";
+    text3.style.display = "none";
   }
 }
