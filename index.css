@@ -1,0 +1,16 @@
+.game.active::before {
+  content: "⮞";
+}
+.game.active:first-child::before {
+  content: "⮞";
+}
+.game:not(.active)::before {
+  content: "";
+}
+
+.game h2::after {
+  content: "";
+  display: block;
+  border-bottom: 3px solid #ffc107;
+  margin-top: -0.3em;
+}
