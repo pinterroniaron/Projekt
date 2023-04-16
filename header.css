@@ -1,7 +1,75 @@
-.btn{
-    user-select: none;
+header {
+  background-color: transparent;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+nav h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 30px;
+  font-weight: 600;
+}
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  margin-top: 2.2%;
+}
+nav li {
+  margin-left: 20px;
+}
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  animation: Slidein 1.5s ease-in 0s 1 normal none;
+  font-size: 17.5px;
 }
 
-.minigame{
-    user-select: none;
+.btn:hover {
+  animation: blink 1s infinite;
+  box-shadow: none;
+  color: yellow;
+}
+
+.btn {
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:not(:first-child)::before {
+  content: "⮞";
+  position: relative;
+  left: -2%;
+  top: 0;
+}
+
+.btn:hover:first-child::before {
+  content: "⮞";
+  position: relative;
+  left: -2%;
+  top: 0;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

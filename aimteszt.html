@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Célzás Teszt</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styless" />
     <link
       rel="stylesheet"
       type="text/css"
@@ -84,6 +84,8 @@
         animation: none;
       }
 
+     
+
       .start-btn:hover {
         animation: blink 1s infinite;
         box-shadow: none;
@@ -95,6 +97,7 @@
         cursor: pointer;
         transition: all 0.3s ease-in-out;
       }
+
       .start-btn:not(:first-child)::before {
         content: "⮞";
         font-size: 24px;
@@ -167,17 +170,17 @@
       /></a>
       <ul>
         <li>
-          <a class="btn" style="font-size: 10px" href="ponggg.html">Pong</a>
+          <a class="btn" draggable="false" href="ponggg.html">Pong</a>
         </li>
         <li>
-          <a class="btn" style="font-size: 10px" href="aimteszt.html"
+          <a class="btn" draggable="false"  href="aimteszt.html"
             >Célzás teszt</a
           >
         </li>
         <li>
-          <a class="btn" style="font-size: 10px" href="spammer.html">Spammer</a>
+          <a class="btn" draggable="false"  href="spammer.html">Spammer</a>
         </li>
-        <li><a class="btn" style="font-size: 10px" href="#">Rólunk</a></li>
+        <li><a class="btn" href="#">Rólunk</a></li>
       </ul>
     </nav>
   </header>
