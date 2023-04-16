@@ -114,15 +114,14 @@
 			<a class="btnn" href="index.html"><img src="pics/favicon.jpeg" alt="" style="width: 80px;"></a>
 			<ul>
 				<li><a class="btn" style="font-size: 10px" href="ponggg.html">Pong</a></li>
-        <li><a class="btn" style="font-size: 10px" href="aimteszt.html">Aim teszt</a></li>
+        <li><a class="btn" style="font-size: 10px" href="aimteszt.html">Célzás teszt</a></li>
         <li><a class="btn" style="font-size: 10px" href="spammer.html">Spammer</a></li>
-				<li><a class="btn" style="font-size: 10px" href="#">About</a></li>
-				<li><a class="btn" style="font-size: 10px" href="#">Contact</a></li>
+				<li><a class="btn" style="font-size: 10px" href="#">Rólunk</a></li>
 			</ul>
 		</nav>
 	</header>
   <body>
-    <h1>Aim Trainer Game</h1>
+    <h1>Célzás Teszt</h1>
     <div class="frame"></div>
     <div class="hearts">
       <span id="heart1">&#x2764;</span>
@@ -131,7 +130,7 @@
     </div>
     <div class="final-score"></div>
     <div>
-      <button class="start-btn">Start</button>
+      <button class="start-btn">Kezdés</button>
     </div>
     <script>
       // Initialize variables
@@ -199,7 +198,7 @@
         frame.appendChild(scoreElement);
         score = 0;
         lives = 3;
-        scoreElement.innerText = `Score: ${score}`;
+        scoreElement.innerText = `Pont: ${score}`;
         hearts.forEach(function (heart) {
           heart.style.opacity = 1;
         });
@@ -220,7 +219,7 @@
         finalscore.style.display = "block";
         startBtn.style.display = "inline-block";
         frame.style.display = "none";
-        finalscore.innerText = `Final Score: ${score}`;
+        finalscore.innerText = `Össz pontod: ${score}`;
         finalscore.addEventListener('click', copyToClipboard);
         timeInterval = 1500;
       }
