@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Aim Trainer Game</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="aimteszt.css">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Press+Start+2P" />
+    <title>Célzás Teszt</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://fonts.googleapis.com/css?family=Press+Start+2P"
+    />
     <style>
       body {
         background-position: 50% 30%;
         background-color: #fff;
         font-family: "Press Start 2P", cursive;
         text-align: center;
-        background: linear-gradient(to bottom, #ffffff, #3632ff);
+        background: black;
         height: 100vh;
         overflow: hidden;
       }
       h1 {
-        color: #333;
+        color: white;
         margin-top: 30px;
         font-size: 50px;
         user-select: none;
@@ -36,6 +39,7 @@
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
         background-color: white;
         cursor: crosshair;
+        z-index: 1;
       }
 
       .dot {
@@ -63,25 +67,59 @@
       .start-btn {
         display: inline-block;
         padding: 15px 30px;
-        background-color: rgba(51, 51, 51, 0.807);
+        background-color: transparent;
         color: #fff;
-        font-size: 75px;
+        font-size: 70px;
         border: none;
         border-radius: 15px;
         cursor: pointer;
         margin-top: 10px;
-        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
         position: absolute;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
         transition: transform 0.2s ease-in-out;
         user-select: none;
+        font-family: "Press Start 2P", cursive;
+        animation: none;
       }
 
       .start-btn:hover {
-        background-color: black;
-        transform: translate(-50%, -50%) scale(1.1);
+        animation: blink 1s infinite;
+        box-shadow: none;
+        color: yellow;
+      }
+
+      .start-btn {
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+      }
+      .start-btn:not(:first-child)::before {
+        content: "⮞";
+        font-size: 24px;
+        position: absolute;
+        left: -30px;
+        top: 0;
+      }
+      .start-btn:hover:first-child:before {
+        content: "⮞";
+        font-size: px;
+        position: absolute;
+        left: -30px;
+        top: 0;
+      }
+
+      @keyframes blink {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
       }
 
       .score {
@@ -100,26 +138,49 @@
         left: 50%;
         font-size: 24px;
         font-weight: bold;
-        color: #333;
+        color: #fff;
         font-size: 50px;
         transform: translate(-50%, -50%);
         text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
         user-select: none;
         cursor: pointer;
       }
+
+      .crosshair {
+        float: right;
+        transform: rotate(10deg);
+        user-select: none;
+        z-index: 0;
+      }
+      .gun {
+        float: left;
+        transform: rotate(-20deg) scaleX(-1);
+        user-select: none;
+        z-index: 0;
+      }
     </style>
   </head>
   <header>
-		<nav>
-			<a class="btnn" href="index.html"><img src="pics/favicon.jpeg" alt="" style="width: 80px;"></a>
-			<ul>
-				<li><a class="btn" style="font-size: 10px" href="ponggg.html">Pong</a></li>
-        <li><a class="btn" style="font-size: 10px" href="aimteszt.html">Célzás teszt</a></li>
-        <li><a class="btn" style="font-size: 10px" href="spammer.html">Spammer</a></li>
-				<li><a class="btn" style="font-size: 10px" href="#">Rólunk</a></li>
-			</ul>
-		</nav>
-	</header>
+    <nav>
+      <a class="btnn" href="index.html"
+        ><img src="pics/favicon.jpeg" alt="" style="width: 80px"
+      /></a>
+      <ul>
+        <li>
+          <a class="btn" style="font-size: 10px" href="ponggg.html">Pong</a>
+        </li>
+        <li>
+          <a class="btn" style="font-size: 10px" href="aimteszt.html"
+            >Célzás teszt</a
+          >
+        </li>
+        <li>
+          <a class="btn" style="font-size: 10px" href="spammer.html">Spammer</a>
+        </li>
+        <li><a class="btn" style="font-size: 10px" href="#">Rólunk</a></li>
+      </ul>
+    </nav>
+  </header>
   <body>
     <h1>Célzás Teszt</h1>
     <div class="frame"></div>
@@ -131,6 +192,12 @@
     <div class="final-score"></div>
     <div>
       <button class="start-btn">Kezdés</button>
+    </div>
+    <div class="crosshair">
+      <img draggable="false" src="pics/crosshair.png" alt="" />
+    </div>
+    <div class="gun">
+      <img draggable="false" src="pics/gun.png" alt="" />
     </div>
     <script>
       // Initialize variables
@@ -153,12 +220,8 @@
         let dot = document.createElement("div");
         dot.classList.add("dot");
         let dotSize = 70; // define the size of the dot
-        let top = Math.floor(
-          Math.random() * (frame.offsetHeight - dotSize - 100)
-        ); // calculate top position
-        let left = Math.floor(
-          Math.random() * (frame.offsetWidth - dotSize - 100)
-        ); // calculate left position
+        let top = Math.floor(Math.random() * (frame.offsetHeight - dotSize)); // calculate top position
+        let left = Math.floor(Math.random() * (frame.offsetWidth - dotSize)); // calculate left position
         dot.style.top = top + "px";
         dot.style.left = left + "px";
         dot.style.width = dotSize + "px"; // set width of dot
@@ -169,7 +232,7 @@
           this.remove();
           dots.splice(dots.indexOf(this), 1);
           score++;
-          scoreElement.innerText = `Score: ${score}`;
+          scoreElement.innerText = `Pont: ${score}`;
           if (score % 5 === 0 && score <= 20) {
             timeInterval -= 200;
           }
@@ -220,7 +283,7 @@
         startBtn.style.display = "inline-block";
         frame.style.display = "none";
         finalscore.innerText = `Össz pontod: ${score}`;
-        finalscore.addEventListener('click', copyToClipboard);
+        finalscore.addEventListener("click", copyToClipboard);
         timeInterval = 1500;
       }
 
@@ -242,11 +305,10 @@
       });
 
       function copyToClipboard() {
-      const textToCopy = finalscore.innerText;
-      navigator.clipboard.writeText(textToCopy);
-      alert('Vágólapra másolva!');
-    }
-
+        const textToCopy = finalscore.innerText;
+        navigator.clipboard.writeText(textToCopy);
+        alert("Vágólapra másolva!");
+      }
 
       // Event listener for window resize
       window.addEventListener("resize", function () {
@@ -265,6 +327,6 @@
   </body>
   <script src="hangvezerles.js"></script>
   <script src="nav.js"></script>
-  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="header.css" />
   <div id="status"></div>
 </html>
