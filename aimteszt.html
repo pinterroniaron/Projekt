@@ -239,8 +239,8 @@
         let dot = document.createElement("div");
         dot.classList.add("dot");
         let dotSize = 70; // define the size of the dot
-        let top = Math.floor(Math.random() * (frame.offsetHeight - dotSize));
-        let left = Math.floor(Math.random() * (frame.offsetWidth - dotSize));
+        let top = Math.floor(Math.random() * (frame.offsetHeight));
+        let left = Math.floor(Math.random() * (frame.offsetWidth));
         dot.style.top = top + "px";
         dot.style.left = left + "px";
         dot.style.width = dotSize + "px";
