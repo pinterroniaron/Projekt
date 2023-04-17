@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <head lang="hu">
     <title>Célzás Teszt</title>
     <link rel="stylesheet" href="styless" />
     <link
@@ -83,8 +83,6 @@
         font-family: "Press Start 2P", cursive;
         animation: none;
       }
-
-     
 
       .start-btn:hover {
         animation: blink 1s infinite;
@@ -173,12 +171,10 @@
           <a class="btn" draggable="false" href="ponggg.html">Pong</a>
         </li>
         <li>
-          <a class="btn" draggable="false"  href="aimteszt.html"
-            >Célzás teszt</a
-          >
+          <a class="btn" draggable="false" href="aimteszt.html">Célzás teszt</a>
         </li>
         <li>
-          <a class="btn" draggable="false"  href="spammer.html">Spammer</a>
+          <a class="btn" draggable="false" href="spammer.html">Spammer</a>
         </li>
         <li><a class="btn" href="#">Rólunk</a></li>
       </ul>
@@ -218,17 +214,16 @@
       frame.appendChild(scoreElement);
       frame.style.display = "none";
 
-      // Function to generate random dots
       function generateDot() {
         let dot = document.createElement("div");
         dot.classList.add("dot");
         let dotSize = 70; // define the size of the dot
-        let top = Math.floor(Math.random() * (frame.offsetHeight - dotSize)); // calculate top position
-        let left = Math.floor(Math.random() * (frame.offsetWidth - dotSize)); // calculate left position
+        let top = Math.floor(Math.random() * (frame.offsetHeight - dotSize));
+        let left = Math.floor(Math.random() * (frame.offsetWidth - dotSize));
         dot.style.top = top + "px";
         dot.style.left = left + "px";
-        dot.style.width = dotSize + "px"; // set width of dot
-        dot.style.height = dotSize + "px"; // set height of dot
+        dot.style.width = dotSize + "px";
+        dot.style.height = dotSize + "px";
         frame.appendChild(dot);
         dots.push(dot);
         dot.addEventListener("click", function () {
@@ -259,7 +254,6 @@
         }, timeInterval);
       }
 
-      // Function to start the game
       function startGame() {
         frame.appendChild(scoreElement);
         score = 0;
@@ -272,10 +266,9 @@
         frame.style.display = "block";
         setTimeout(function () {
           generateDot();
-        }, 1000); // 1 second delay
+        }, 1000);
       }
 
-      // Function to end the game
       function endGame() {
         document.body.appendChild(finalscore);
         dots.forEach(function (dot) {
@@ -290,13 +283,11 @@
         timeInterval = 1500;
       }
 
-      // Event listener for start button
       startBtn.addEventListener("click", function () {
         finalscore.style.display = "none";
         startGame();
       });
 
-      // Event listener for hearts
       hearts.forEach(function (heart) {
         heart.addEventListener("click", function () {
           if (lives === 0) {
@@ -313,7 +304,6 @@
         alert("Vágólapra másolva!");
       }
 
-      // Event listener for window resize
       window.addEventListener("resize", function () {
         let dotElements = document.querySelectorAll(".dot");
         dotElements.forEach(function (dot) {

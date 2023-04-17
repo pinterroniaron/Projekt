@@ -1,3 +1,13 @@
+body {
+  background-position: 50% 30%;
+  background-color: #fff;
+  font-family: "Press Start 2P", cursive;
+  text-align: center;
+  background: black;
+  height: 100vh;
+  overflow: hidden;
+}
+
 header {
   background-color: transparent;
   padding: 10px 20px;
@@ -41,6 +51,8 @@ nav ul li a {
   box-shadow: none;
   color: yellow;
 }
+
+
 
 .btn {
   color: white;
