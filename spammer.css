@@ -213,3 +213,28 @@ nav ul li a {
       opacity: 1;
     }
   }
+
+  #a{
+   position: absolute;
+    font-size: 500%;
+    top: 50%;
+    left: 10%;
+  }
+
+  #l{
+    position: absolute;
+     font-size: 500%;
+     top: 50%;
+     right: 10%;
+   }
+ 
+
+  .scale{
+    animation: scale 1s;
+  }
+  
+  @keyframes scale{
+    0% {transform: scale(1);}
+    50%{transform: scale(10);}
+    100%{transform: scale(1);}
+  }

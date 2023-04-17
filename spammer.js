@@ -12,6 +12,7 @@ let lastPlayer2Click = 0;
 let isPlayer1KeyPressed = false;
 let isPlayer2KeyPressed = false;
 
+
 // pont frissítés
 function updateScores(event) {
   if (!isGameStarted) return;
@@ -33,7 +34,7 @@ function updateScores(event) {
         document.getElementById("player1").style.width = "100%";
         document.getElementById("player2").style.width = "0%";
         setTimeout(function() {
-          alert(`${document.getElementById("player1-name").value ? document.getElementById("player1-name").value : "Player 1"} wins!`);
+          alert(`${document.getElementById("player1-name").value ? document.getElementById("player1-name").value : "Egyes játékos"} nyert!`);
           isFirstKeyPress = false;
           lastPlayer1Click = 0;
           lastPlayer2Click = 0;
@@ -48,6 +49,8 @@ function updateScores(event) {
           startButton.textContent = "Start";
           document.getElementById("player1").style.width = "50%";
           document.getElementById("player2").style.width = "50%"; 
+          aElement.style.display = "none";
+          lElement.style.display = "none";
         }, 100);
         return;
       }
@@ -62,7 +65,7 @@ function updateScores(event) {
         document.getElementById("player1").style.width = "0%";
         document.getElementById("player2").style.width = "100%";
         setTimeout(function() {
-          alert(`${document.getElementById("player2-name").value ? document.getElementById("player2-name").value : "Player 2"} wins!`) ;
+          alert(`${document.getElementById("player2-name").value ? document.getElementById("player2-name").value : "Kettes játékos"} nyert!`) ;
           isFirstKeyPress = false;
           lastPlayer1Click = 0;
           lastPlayer2Click = 0;
@@ -77,6 +80,8 @@ function updateScores(event) {
           startButton.textContent = "Start";
           document.getElementById("player1").style.width = "50%";
           document.getElementById("player2").style.width = "50%"; 
+          aElement.style.display = "none";
+          lElement.style.display = "none";
         }, 100);
         return;
       }
@@ -129,6 +134,8 @@ startButton.addEventListener("click", () => {
         isGameStarted = true;
         const head = document.getElementById("head");
         head.style.display = "none";
+        aElement.style.display = "block";
+        lElement.style.display = "block";
       }, 1000);
     }, 1000);
   }, 1000);
@@ -178,3 +185,27 @@ function darkmode() {
     document.querySelector("#darkmode").innerText = "Kék/Piros";
   }
 }
+
+const aElement = document.getElementById("a");
+
+
+document.addEventListener("keydown", event => {
+  if (event.key === "a") {
+    aElement.classList.add("scale");
+    setTimeout(() => {
+      aElement.classList.remove("scale");
+    }, 50);
+  }
+});
+
+const lElement = document.getElementById("l");
+
+
+document.addEventListener("keydown", event => {
+  if (event.key === "l") {
+    lElement.classList.add("scale");
+    setTimeout(() => {
+      lElement.classList.remove("scale");
+    }, 50);
+  }
+});
