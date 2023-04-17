@@ -6,6 +6,8 @@ let player2Score = halfScore;
 let isFirstKeyPress = true;
 const player1Key = "a";
 const player2Key = "l";
+const aElement = document.getElementById("a");
+const lElement = document.getElementById("l");
 let clickDelay = 0.1;
 let lastPlayer1Click = 0;
 let lastPlayer2Click = 0;
@@ -30,6 +32,10 @@ function updateScores(event) {
       player2Score = winningScore - player1Score;
       lastPlayer1Click = now;
       isPlayer1KeyPressed = true;
+      aElement.classList.add("scale");
+      setTimeout(() => {
+      aElement.classList.remove("scale");
+      }, 50);
       if (player1Score >= winningScore) {
         document.getElementById("player1").style.width = "100%";
         document.getElementById("player2").style.width = "0%";
@@ -61,6 +67,10 @@ function updateScores(event) {
       player1Score = winningScore - player2Score;
       lastPlayer2Click = now;
       isPlayer2KeyPressed = true;
+      lElement.classList.add("scale");
+      setTimeout(() => {
+      lElement.classList.remove("scale");
+      }, 50);
       if (player2Score >= winningScore) {
         document.getElementById("player1").style.width = "0%";
         document.getElementById("player2").style.width = "100%";
@@ -185,27 +195,3 @@ function darkmode() {
     document.querySelector("#darkmode").innerText = "Kék/Piros";
   }
 }
-
-const aElement = document.getElementById("a");
-
-
-document.addEventListener("keydown", event => {
-  if (event.key === "a") {
-    aElement.classList.add("scale");
-    setTimeout(() => {
-      aElement.classList.remove("scale");
-    }, 50);
-  }
-});
-
-const lElement = document.getElementById("l");
-
-
-document.addEventListener("keydown", event => {
-  if (event.key === "l") {
-    lElement.classList.add("scale");
-    setTimeout(() => {
-      lElement.classList.remove("scale");
-    }, 50);
-  }
-});
