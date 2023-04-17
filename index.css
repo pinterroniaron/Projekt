@@ -60,6 +60,7 @@ h1 {
 }
 .active {
   animation: blink 1s infinite;
+  color: yellow;
 }
 @keyframes blink {
   0% {
