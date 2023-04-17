@@ -96,6 +96,7 @@ h1 {
   top: 20%;
   left: 2%;
   text-align: left;
+  user-select: none;
 }
 
 .text-container h1 {

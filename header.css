@@ -20,6 +20,7 @@ header {
 nav {
   display: flex;
   justify-content: space-between;
+  user-select: none;
 }
 nav h1 {
   margin: 0;
