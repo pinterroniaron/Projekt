@@ -1,5 +1,97 @@
-#start-button {
-    background-color: #0066CC;
+body {
+  background-position: 50% 30%;
+  background-color: #fff;
+  font-family: "Press Start 2P", cursive;
+  text-align: center;
+  background: black;
+  height: 100vh;
+  overflow: hidden;
+}
+
+header {
+  background-color: transparent;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+nav h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 30px;
+  font-weight: 600;
+}
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  margin-top: 2.2%;
+}
+nav li {
+  margin-left: 20px;
+}
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  animation: Slidein 1.5s ease-in 0s 1 normal none;
+  font-size: 17.5px;
+}
+
+.btn:hover {
+  animation: blink 1s infinite;
+  box-shadow: none;
+  color: yellow;
+}
+
+
+.btn {
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:not(:first-child)::before {
+  content: "⮞";
+  position: relative;
+  left: -2%;
+  top: 0;
+}
+
+.btn:hover:first-child::before {
+  content: "⮞";
+  position: relative;
+  left: -2%;
+  top: 0;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#start-button:hover {
+  animation: blink 1s infinite;
+  box-shadow: none;
+  color: yellow;
+}
+
+  #start-button {
     border-radius: 20px;
     border: none;
     color: white;
@@ -12,16 +104,7 @@
     font-size: 48px;
   }
   
-  body {
-    background-position: 50%;
-    font-family: 'Open Sans', sans-serif;
-    color: white;
-    margin: 0;
-    padding: 0;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-  }
+
   .darkmode {
       background-color: white;
       color: white;
@@ -46,18 +129,6 @@
   .darkmode .btn {
     background-color: transparent;
     color: rgb(255, 255, 255);
-    border: yellow solid;
-  }
-  
-  .darkmode header nav ul li a:hover {
-    background-color: #A9A9A9;
-    box-shadow: 0 5px 5px rgba(225,225,225,.5);
-  }
-  
-  .darkmode .btn:hover {
-    background-color: #000000;
-    box-shadow: 0 5px 5px rgba(225,225,225,.5);
-    color: white;
   }
   
   .darkmode .card:hover {
@@ -96,18 +167,6 @@
     box-shadow: 0 5px 5px rgba(0,0,0,.5);
   }
   
-  .btn:hover {
-    box-shadow: 0 5px 5px rgba(0,0,0,.5);
-    text-shadow:
-    0 0 7px #fff,
-    0 0 10px #fff,
-    0 0 21px #fff,
-    0 0 42px #0fa,
-    0 0 82px #0fa,
-    0 0 92px #0fa,
-    0 0 102px #0fa,
-    0 0 151px #0fa;
-  }
   
   button {
     border: none;
@@ -130,56 +189,7 @@
     text-decoration: none;
     border-radius: 5px;
   }
-  .card {
-    background-color: rgb(30, 0, 166, 0.5);
-    box-shadow: 0 2px 2px rgba(0,0,0,.1);
-    padding: 20px;
-    margin: 20px;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    display: inline-block;
-    position: relative;
-  }
-  .card:hover {
-    box-shadow: 0 4px 4px rgba(0,0,0,.2);
-    top: -5px;
-    transition: all 0.5s ease;
-  }
-  .card img {
-    width: 100%;
-    max-width: 350px;
-    height: auto;
-    border-radius: 5px;
-  }
-  .card h3 {
-    font-size: 35px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-weight: bold;
-  }
-  .card p {
-    font-size: 15px;
-    line-height: 1.5;
-    margin: 0;
-    padding: 10px 0;
-  }
-  .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: transparent;
-    border: #0066CC solid;
-    color: #000000;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: all 0.6s ease;
-    font-family: "Press Start 2P", cursive;
-    font-weight: bold;
-    font-size: 10px;
-  }
-  .btn:hover {
-    background-color: #ff0000;
-    transform: translateY(-8px);
-  }
+
   
   .minigame {
     display: inline-block;
@@ -191,18 +201,15 @@
     animation: fadeIn 2s;
   }
 
-  @keyframes Slidein {
-  from {
-    transform: translateX(800px);
+  
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
-
-  to {
-    transform: translateX(0);
-  }
-
-}
-
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}

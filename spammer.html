@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head lang="hu">
   <title>Click Race</title>
   <link rel="stylesheet" href="spammer.css">
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Press+Start+2P" />
@@ -31,7 +31,6 @@
       font-size: 50px;
       background-color: black;
       padding: 16px;;
-      color: white;
       cursor: pointer;
     }
     #player-inputs {
@@ -61,7 +60,7 @@
         <li><a class="btn" href="aimteszt.html">Célzás teszt</a></li>
         <li><a class="btn" href="spammer.html">Spammer</a></li>
 				<li><a class="btn" href="#">Rólunk</a></li>
-        <li><button class="btn" id="darkmode" onclick="darkmode()">Sárga/Fekete</button></li>
+        <li><a class="btn" id="darkmode" onclick="darkmode()">Sárga/Fekete</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -73,11 +72,10 @@
     <input type="text" id="player1-name" placeholder="Egyes játékos neve">
     <input type="text" id="player2-name" placeholder="Kettes játékos neve">
   </div>
-  <button id="start-button">Kezdés</button>
+  <button id="start-button" class="start-btn">Kezdés</button>
   <script src="spammer.js"></script>
   <script src="hangvezerles.js"></script>
   <script src="nav.js"></script>
   <div id="status"></div>
 </body>
-<link rel="stylesheet" href="header.css">
 </html>
